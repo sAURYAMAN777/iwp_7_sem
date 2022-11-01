@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Create order</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="manifest" href="manifest.json">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#3cb371">
+		<meta name="apple-mobile-web-app-title" content="E Waste">
+		<link rel="apple-touch-icon" href="images/icons/icon-72x72.png" sizes="72x72">
+		<link rel="apple-touch-icon" href="images/icons/icon-96x96.png" sizes="96x96">
+		<link rel="apple-touch-icon" href="images/icons/icon-128x128.png" sizes="128x128">
+		<link rel="apple-touch-icon" href="images/icons/icon-144x144.png" sizes="144x144">
+		<link rel="apple-touch-icon" href="images/icons/icon-152x152.png" sizes="152x152">
+		<link rel="apple-touch-icon" href="images/icons/icon-192x192.png" sizes="192x192">
+		<link rel="apple-touch-icon" href="images/icons/icon-384x384.png" sizes="384x384">
+		<link rel="apple-touch-icon" href="images/icons/icon-512x512.png" sizes="512x512">
+		<meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+		<meta name="msapplication-TileColor" content="#3cb371">
+		<meta name="theme-color" content="#3cb371">
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="contact ui/css/style.css">
+		<link href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+				<form>
+					<h3>Make Your Order</h3>
+					<p>Please fill up the details carefully and correctly so that we can make your work easier</p>
+					<p style="color: black;"><span style="font-weight: 600;">Note :</span>Apart from general garbage cleaning,
+					if you have any older items to sell you will get paid for it. The payment amount will be decided when our employees do the pickup</p>
+					<label class="form-group">
+						<input id="name" type="text" class="form-control"  required>
+						<span>Your Name</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group">
+						<input id="title" type="text" class="form-control"  required>
+						<span>Give a unique title to your order</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group" >
+						<textarea name="" id="add" class="form-control" required></textarea>
+						<span for="">Address</span>
+						<span class="border"></span>
+					</label>
+
+					<label class="form-group">
+						<p>Choose the service that you want</p>
+						<input type="checkbox" id="yes" name="choice" value="yes" onclick="myFunction1()">
+						<label for="yes">Garbage cleaning</label><br>
+						<input type="checkbox" id="no" name="choice" value="no" onclick="myFunction2()">
+						<label for="no">Sell old item</label><br>
+						<span></span>
+						<span class="border"></span>
+					</label>
+
+					<label class="form-group" style="display: none;" id="quan">
+						<input id="quantity" type="text" class="form-control">
+						<span for="">Quantity of garbage in kg</span>
+						<span class="border"></span>
+					</label>
+					
+					<label class="form-group"style="display: none;" id="desc">
+						<input type="text" id="desci" class="form-control">
+						<span for="">What item do you want to sell?</span>
+						<span class="border"></span>
+					</label>
+
+					<label class="form-group"style="display: none;" id="describe">
+						<textarea id="describee" class="form-control"></textarea>
+						<span for="">Give a brief decription of the item you want to sell</span>
+						<span class="border"></span>
+					</label>
+
+					<label class="form-group">
+						<input id="phone" type="number" class="form-control"  required>
+						<span for="">Phone</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group" >
+						<textarea name="" id="remarks" class="form-control"></textarea>
+						<span for="">Any remarks</span>
+						<span class="border"></span>
+					</label>
+					
+				</form>
+				<button type="button" id="createroom">
+					Submit
+				</button>
+			</div>
+		</div>
+		<a href="query.html" title="query chat bot" class="back-to-topq query-btn"><i class="fa fa-question"></i></a>
+
+	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js"></script>
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/main5.js"></script>
+	<script>
+		function myFunction1() {
+  // Get the checkbox
+  var checkBox = document.getElementById("yes");
+  // Get the output text
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    document.getElementById("quan").style.display = "block";
+  } else {
+    document.getElementById("quan").style.display = "none";
+  }
+}
+function myFunction2() {
+  // Get the checkbox
+  var checkBox = document.getElementById("no");
+  // Get the output text
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    document.getElementById("desc").style.display = "block";
+	document.getElementById("describe").style.display = "block";
+  } else {
+    document.getElementById("desc").style.display = "none";
+	document.getElementById("describe").style.display = "none";
+  }
+}
+</script>
+	</body>
+</html>

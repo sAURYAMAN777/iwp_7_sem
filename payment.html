@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Payment Gateway</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- STYLE CSS -->
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bootstrap/bootstrap-social/bootstrap-social.css">
+        <link href="css/commoncss.css" rel="stylesheet">
+        <link rel="manifest" href="manifest.json">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#3cb371">
+        <meta name="apple-mobile-web-app-title" content="E Waste">
+        <link rel="apple-touch-icon" href="images/icons/icon-72x72.png" sizes="72x72">
+        <link rel="apple-touch-icon" href="images/icons/icon-96x96.png" sizes="96x96">
+        <link rel="apple-touch-icon" href="images/icons/icon-128x128.png" sizes="128x128">
+        <link rel="apple-touch-icon" href="images/icons/icon-144x144.png" sizes="144x144">
+        <link rel="apple-touch-icon" href="images/icons/icon-152x152.png" sizes="152x152">
+        <link rel="apple-touch-icon" href="images/icons/icon-192x192.png" sizes="192x192">
+        <link rel="apple-touch-icon" href="images/icons/icon-384x384.png" sizes="384x384">
+        <link rel="apple-touch-icon" href="images/icons/icon-512x512.png" sizes="512x512">
+        <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+        <meta name="msapplication-TileColor" content="#3cb371">
+        <meta name="theme-color" content="#3cb371">
+        <style>
+            input {
+                margin: 20px;
+                width: 50%;
+            }
+            form {
+                margin-bottom: 8px;
+            }
+                    </style>
+	</head>
+
+	<body>
+        <center><h2>Welcome to payment gateway</h2></center>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                </div>
+                <div class="col-lg-6 col-md-6" style="background-color: #6c757d;padding: 20px;display: flex;flex-direction: column;
+                flex-wrap: wrap;justify-content: center;align-items: center;border-radius: 10px;">
+                    <form>
+                        <input type="number" id="debit-no" placeholder="Enter Debit card Number" required>:<label for="debit-no"> Debit Card Number</label>
+                        <input type="text" id="acc-name" placeholder="Enter name of account holder" required>:<label for="acc-name"> Account Holder's Name</label>
+                        <input type="date" id="expiry" required>:<label for="expiry">The expiry date of debit card</label>
+                        <input type="number" id="cvv" placeholder="Enter CVV" required>:<label for="cvv">CVV</label>
+                        <input type="tel" id="phoneNumber" required>:<label for="phoneNumber">Valid Phone Number</label>
+                        <!-- Add a container for reCaptcha -->
+                        <div id="recaptcha-container"></div>
+                        
+                    </form>
+                    <center><button type="submit" id="sign-in-button" onclick="submitPhoneNumberAuth()">
+                      GET OTP
+                    </button></center>
+                    <div class="amount" style="padding: 10px 10px 7px 10px;background-color: antiquewhite;border-radius: 5px;margin-bottom: 6px;">
+                        <p style="font-family: hel;font-weight: 600;">Money to be withdrawn :&nbsp;<span id="amt"></span></p>
+                    </div>
+                    
+                    <form id="two">
+                        <p>Enter verification code</p>
+                        <input type="text" id="code" />:<label for="code"> Enter verification code</label>
+                        
+                    </form>
+                    <button id="confirm-code" onclick="submitPhoneNumberAuthCode()">
+                      ENTER CODE
+                    </button>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                </div>
+                
+            </div>
+        </div>
+		<a href="query.html" title="query chat bot" class="back-to-topq query-btn"><i class="fa fa-question"></i></a>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/purecounter/purecounter.js"></script>
+    <script src="vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCBn6ujoGSflOXlCpoOapFINs1JvuF4mX8",
+    authDomain: "otp-verify-d94d5.firebaseapp.com",
+    projectId: "otp-verify-d94d5",
+    storageBucket: "otp-verify-d94d5.appspot.com",
+    messagingSenderId: "340781756521",
+    appId: "1:340781756521:web:987dd479a5a7dd30f132f8"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+ var money=0;
+ if(localStorage.money)
+ money=localStorage.money;
+ document.getElementById("amt").innerHTML=money;
+// Create a Recaptcha verifier instance globally
+      // Calls submitPhoneNumberAuth() when the captcha is verified
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+        "recaptcha-container",
+        {
+          size: "invisible",
+          callback: function(response) {
+            submitPhoneNumberAuth();
+          }
+        }
+      );
+
+      // This function runs when the 'sign-in-button' is clicked
+      // Takes the value from the 'phoneNumber' input and sends SMS to that phone number
+      function submitPhoneNumberAuth() {
+        var phoneNumber = document.getElementById("phoneNumber").value;
+        var appVerifier = window.recaptchaVerifier;
+        firebase
+          .auth()
+          .signInWithPhoneNumber(phoneNumber, appVerifier)
+          .then(function(confirmationResult) {
+            window.confirmationResult = confirmationResult;
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }
+
+      // This function runs when the 'confirm-code' button is clicked
+      // Takes the value from the 'code' input and submits the code to verify the phone number
+      // Return a user object if the authentication was successful, and auth is complete
+      function submitPhoneNumberAuthCode() {
+        var code = document.getElementById("code").value;
+        confirmationResult
+          .confirm(code)
+          .then(function(result) {
+            var user = result.user;
+            console.log(user);
+            alert("successful payment");
+            window.localStorage.removeItem('money');
+            window.location.href="customer.html#order";
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }
+
+      //This function runs everytime the auth state changes. Use to verify if the user is logged in
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          console.log("USER LOGGED IN");
+        } else {
+          // No user is signed in.
+          console.log("USER NOT LOGGED IN");
+        }
+      });
+</script>
+
+    
+	</body>
+</html>
+
+
+    
+    
+
+    
+    
+
+    
+

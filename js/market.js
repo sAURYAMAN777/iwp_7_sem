@@ -2,7 +2,7 @@ var flag=0;
 var i="";
 var user= firebase.auth().currentUser;
 console.log(user);
-var hjcordiref= firebase.database().ref("orders/");
+var hjcordiref= firebase.database().ref("marketplace/");
 
 var userrole= firebase.database().ref("userdata/");
    userrole.orderByChild("email").equalTo(`${localStorage.getItem('emails')}`).on("child_added", function(data){
@@ -30,7 +30,7 @@ var userrole= firebase.database().ref("userdata/");
  hjcordiref.on("child_added", function(data){
    console.log(data.key);
    i=data.key;
-      var pathe= firebase.database().ref("orders/"+data.key)
+      var pathe= firebase.database().ref("marketplace/"+data.key)
       pathe.on("child_added",function(data){
 
 
@@ -43,7 +43,8 @@ var userrole= firebase.database().ref("userdata/");
         {
         var html = "";
         html +=`
-         <div id="${encodeURI(data.key)+'wrap'}" class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+        <div style="background-color:transparent" class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+         <div id="${encodeURI(data.key)+'wrap'}">
          <article class="entry">
 
            <div class="entry-img">
@@ -59,16 +60,34 @@ var userrole= firebase.database().ref("userdata/");
 
            <div class="entry-meta">
              <ul>
-               <li class="d-flex align-items-center"><i class="icofont-user"></i>${newVoke.name}</li>
+               <li class="d-flex align-items-center"><i class="icofont-user"></i><b>${newVoke.name}</b></li>
                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i><time>${newVoke.time}</time></a></li>
              </ul>
            </div>
 
            <div class="entry-content">
-              <p style="font-weight:600;">
+              <p style="font-weight:600;min-height:50px;">
                ${newVoke.description}
              </p>
-             <div data-uid-id="${i}" data-key-id="${data.key}"  class="read-more" onclick="buy_item(this)">
+             <p>
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#${data.key+'card'}" aria-expanded="false" aria-controls="${data.key+'card'}">
+                See full description
+              </button>
+            </p>
+
+            <div style="min-height: 0px;margin: 12px;">
+              <div class="collapse collapse-horizontal" id="${data.key+'card'}">
+                <div class="card card-body" style="width: 300px;">
+                  <p><b>Description:&nbsp;</b> ${newVoke.description}</p>
+                  <p><b>How old is item:&nbsp;</b> ${newVoke.how_old_is_item}</p>
+                  <p><b>Any Damages:&nbsp;</b> ${newVoke.defects}</p>
+                  <p><b>Seller's contact:&nbsp;</b> ${newVoke.phone}</p>
+                  <p><b>Remarks:&nbsp;</b> ${newVoke.remark}</p>
+                </div>
+              </div>
+            </div>
+
+             <div data-uid-id="${i}" data-key-id="${data.key}"  class="read-more" onclick="buy_item(this)" style="margin: 8px;padding 8px;">
              <span id="" style="padding: 6px;background-color:#FF4500;cursor:pointer;">
                Buy Now
              </span>
@@ -78,6 +97,7 @@ var userrole= firebase.database().ref("userdata/");
 
          </article><!-- End blog entry -->
        </div>
+      </div>
 `
 
           document.getElementById("classe").innerHTML += html;
@@ -102,15 +122,12 @@ var userrole= firebase.database().ref("userdata/");
   var dtitle = self.getAttribute("data-key-id");
   var uid= self.getAttribute("data-uid-id");
   var tgref=firebase.database().ref("marketplace/"+localStorage.uids+"/"+dtitle);
- var newref=firebase.database().ref("orders/"+uid);
+  var newref=firebase.database().ref("orders/"+uid);
 
- newref.orderByChild("title").equalTo(dtitle).on("child_added", function(data){
-  data.val().status="active";         
-  tgref.set(data.val());
- });
-
-  
-  
+  newref.orderByChild("title").equalTo(dtitle).on("child_added", function(data){
+    data.val().status="active";         
+    tgref.set(data.val());
+  });
   window.location.href="payment.html";
  } 
 // var us=document.getElementById("user");

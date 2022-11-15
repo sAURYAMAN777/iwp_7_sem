@@ -1,9 +1,28 @@
+var uploader = document.getElementById('uploader');
+                var fileButton =         document.getElementById('imagee');
+                fileButton.addEventListener('change', function(e){
+                    var file = e.target.files[0];
+                    var storageRef = firebase.storage().ref("images/"+`${localStorage.uids}`+'/'+`${document.querySelector('#title').value}`);
+                    var task = storageRef.put(file);
+                    task.on('state_changed', function progress(snapshot) {
+                        var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+                        uploader.value = percentage;
+                    }, function error(err) {
+                        },function complete() {
+                            // firebase.database().ref("Images/"+).set({
+
+                            // });
+                    }); 
+                 });
+
 document.querySelector("#createroom").onclick = function(){
     var d= new Date();
     var format=d.getDate()+" / "+(d.getMonth()+1)+" / "+d.getFullYear()+" "+(d.getHours())+" : "+(d.getMinutes()+1)+" : "+(d.getSeconds()+1)+" GMT +0530 (Indian Standard Time)";
-let name1,title,address,quantity="",phone,remark="",status="active",item_sell="",description="";    
+let name1,title,address,quantity="",phone,remark="",status="active",item_sell="",description="",age="",defects="";    
 vali();
             function vali(){
+                
+                       
                 name1 = document.querySelector('#name').value;
                 title = document.querySelector('#title').value;
                 address = document.querySelector('#add').value;
@@ -12,9 +31,11 @@ vali();
                 remark = document.querySelector('#remarks').value;
                 item_sell= document.querySelector('#desci').value;
                 description=document.querySelector('#describee').value;
+                age=document.querySelector('#agee').value;
+                defects=document.querySelector('#defectss').value;
                 if(name1!=null && title!=null && quantity!=null && address!=null && phone!=null){
                 var user = firebase.auth().currentUser;
-         var tgref=firebase.database().ref("orders/"+`${user.uid}/${document.getElementById("title").value}`);
+         var tgref=firebase.database().ref("marketplace/"+`${user.uid}/${document.getElementById("title").value}`);
     var data={
         "name":name1,
         "email":localStorage.emails,
@@ -26,37 +47,40 @@ vali();
         "time":format,
         "item_to_be_sold":item_sell,
         "description":description,
+        "how_old_is_item":age,
+        "defects":defects,
         "status":status,
          }
      tgref.set(data).then(function(){
+
         var cliref1 = firebase.database().ref('userdata/');
-        
-        cliref1.on("child_added",function(snapshot) {
-          if(snapshot.val().email==localStorage.emails)
-          {
-            if(snapshot.val().type=="monthly")
-            {
-                alert("You dont have to pay since you have subscribed to our monthly plan");
-                window.location.href="customer.html#order";
-            }
-            else if(snapshot.val().type=="premium")
-            {
-                alert("You dont have to pay since you have subscribed to our premium plan");
-                window.location.href="customer.html#order";
-            }
-            else if(!(localStorage.check))
-            {
-                alert("You dont have to pay since the first pickup is free");
-                localStorage.setItem('check',1);
-                // window.location.href="customer.html#order";
-            }
-            else {
-                localStorage.setItem('money',200);
-                window.location.href="payment.html";  
-            }            
-          }
+        window.location.href="customer.html#order";
+//         cliref1.on("child_added",function(snapshot) {
+//           if(snapshot.val().email==localStorage.emails)
+//           {
+//             if(snapshot.val().type=="monthly")
+//             {
+//                 alert("You dont have to pay since you have subscribed to our monthly plan");
+//                 window.location.href="customer.html#order";
+//             }
+//             else if(snapshot.val().type=="premium")
+//             {
+//                 alert("You dont have to pay since you have subscribed to our premium plan");
+//                 window.location.href="customer.html#order";
+//             }
+//             if(!(localStorage.check))
+//             {
+//                 alert("You dont have to pay since the first pickup is free");
+//                 localStorage.setItem('check',1);
+//                 // window.location.href="customer.html#order";
+//             }
+//             else {
+//                 localStorage.setItem('money',200);
+//                 window.location.href="payment.html";  
+//             }            
+//           }
   
-  });
+//   });
              
     });
   

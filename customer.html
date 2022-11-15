@@ -41,146 +41,7 @@
    <meta name="theme-color" content="#3cb371">
   <!-- Template Main CSS File -->
   <link href="css/style2.css" rel="stylesheet">
-  <style>
-    .blog {
-  padding: 0 0 40px 0;
-}
-
-.blog .entry {
-  padding: 20px;
-  margin-bottom: 60px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.blog .entry .entry-img {
-  max-height: 400px;
-  margin: -20px -20px 20px -20px;
-  overflow: hidden;
-}
-
-.blog .entry .entry-title {
-  font-size: 20px;
-  line-height: 26px;
-  font-weight: bold;
-  padding: 0;
-  margin: 0 0 20px 0;
-}
-
-.blog .entry .entry-title a {
-  color: #473d3a;
-  transition: 0.3s;
-}
-
-.blog .entry .entry-title a:hover {
-  color: #ff5821;
-}
-
-.blog .entry .entry-meta {
-  margin-bottom: 15px;
-  color: #afa29e;
-}
-
-.blog .entry .entry-meta ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.blog .entry .entry-meta ul li + li {
-  padding-left: 20px;
-}
-
-.blog .entry .entry-meta i {
-  font-size: 14px;
-  padding-right: 4px;
-}
-
-.blog .entry .entry-meta a {
-  color: #988782;
-  font-size: 14px;
-  display: inline-block;
-  line-height: 1;
-}
-
-.blog .entry .entry-content p {
-  line-height: 24px;
-  font-size: 15px;
-}
-
-.blog .entry .entry-content .read-more {
-  -moz-text-align-last: right;
-  text-align-last: right;
-}
-
-.blog .entry .entry-content .read-more a {
-  display: inline-block;
-  background: #ff5821;
-  color: #fff;
-  padding: 6px 20px;
-  transition: 0.3s;
-  font-size: 14px;
-}
-
-.blog .entry .entry-content .read-more a:hover {
-  background: #ff774a;
-}
-
-.blog .entry .entry-content h3 {
-  font-size: 22px;
-  margin-top: 30px;
-  font-weight: bold;
-}
-
-.blog .entry .entry-content blockquote {
-  overflow: hidden;
-  background-color: #fafafa;
-  padding: 60px;
-  position: relative;
-  text-align: center;
-  margin: 20px 0;
-}
-
-.blog .entry .entry-content blockquote p {
-  color: #313030;
-  line-height: 1.6;
-  margin-bottom: 0;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 22px;
-}
-
-.blog .entry .entry-content blockquote .quote-left {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  font-size: 36px;
-  color: #e7e7e7;
-}
-
-.blog .entry .entry-content blockquote .quote-right {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  font-size: 36px;
-  color: #e7e7e7;
-}
-
-.blog .entry .entry-content blockquote::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background-color: #473d3a;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-  </style>
+  <link href="css/blog.css" rel="stylesheet">
 
 </head>
 
@@ -199,11 +60,12 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#order"><span>Order pickup</span></a></li>
+          <li><a class="nav-link scrollto" href="#order"><span>Sell items</span></a></li>
           <li><a class="nav-link scrollto" href="marketplace.html"><span>Marketplace</span></a></li>
+          <li><a class="nav-link scrollto" href="vieworders.html"><span>My Orders</span></a></li>
           <li><a class="nav-link scrollto" href="#features">Services</a></li>
           <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">Bill pay</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#pricing">Bill pay</a></li> -->
           <li><a class="nav-link scrollto" href="blog.html">Sustainability</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><button class="btn btn-outline-danger" style="margin-left: 71%;background-color: #fff;" id="log" type="button"><i class="bi bi-power"></i> Logout</button></li>
@@ -299,32 +161,22 @@
     
           <div class="col-lg-12 col-md-12" style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
             <div class="count-box">
-              <center><p>Click the button below to schedule a pickup</p></center>
-              <center><p>First pickup is free</p></center>
-              <center><p style="color: red;"><span style="font-weight: 600;">Note :</span>You can also order a pickup if you want to sell an old item to us</p></center>
+              <center><p>Click the button below to list an item to sell</p></center>
+              <center><p>First item wont be charged commission</p></center>
+              <center><p style="color: red;"><span style="font-weight: 600;">Note :</span>You can advertise if you want to sell an old item to us</p></center>
               <center><i style="margin: 7px;" class="fa fa-user fa-2x"></i></center>
-              <center><a href="createorder.html"><button class="btn btn-outline-success" id="create" type="button"><i class="fa fa-pencil"></i>  Create</button></a>
+              <center><a href="createorder.html"><button class="btn btn-outline-success" id="create" type="button"><i class="fa fa-pencil"></i>&nbsp;Add item&nbsp;</button></a>
               </center>
             </div>
             <div class="myorders" style="margin: 10px;width:100%">
-              <h4>Your current order(s) are:</h3>
-                
-              </div>
-
+              <h3>Your listed items are:</h3>
+            </div>
           </div>
-        
         </div>
+
         <div class="row" style="display: flex;justify-content: center;" id="classe"></div>
-
-        <div class="myorders" style="margin: 10px;width:100%">
-          <br>
-          <br>
-          <h4>Your order(s) from marketplace are:</h3>
-            
-          </div>
-
-        <div class="row" style="display: flex;justify-content: center;" id="classe2"></div>
-
+        <br>
+        <center><a title="Click here to go to sellers' page" href="sell.html"><button type="button" class="btn btn-success">Seller's page&nbsp;<i class="fa fa-arrow-right"></i></button></a></center>
       </div>
     </section><!-- End Order Section -->
 <style>
@@ -749,7 +601,7 @@
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Call:</h4>
-                <p>+91 7008394112</p>
+                <p>+91 9938217968</p>
               </div>
 
             </div>
@@ -811,6 +663,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-storage.js"></script>
   <script>
     function myFunction(self) {
       var copyText = document.getElementById(`myInput${self.getAttribute("data-id")}`);

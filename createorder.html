@@ -29,10 +29,10 @@
 		<div class="wrapper">
 			<div class="inner">
 				<form>
-					<h3>Make Your Order</h3>
+					<h3>Make Your Sell</h3>
 					<p>Please fill up the details carefully and correctly so that we can make your work easier</p>
 					<p style="color: black;"><span style="font-weight: 600;">Note :</span>Apart from general garbage cleaning,
-					if you have any older items to sell you will get paid for it. The payment amount will be decided when our employees do the pickup</p>
+					if you have any older items to sell you will get paid for it. The payment amount will be decided when the buyers agress</p>
 					<label class="form-group">
 						<input id="name" type="text" class="form-control"  required>
 						<span>Your Name</span>
@@ -40,7 +40,7 @@
 					</label>
 					<label class="form-group">
 						<input id="title" type="text" class="form-control"  required>
-						<span>Give a unique title to your order</span>
+						<span>Give a title to your order</span>
 						<span class="border"></span>
 					</label>
 					<label class="form-group" >
@@ -77,11 +77,31 @@
 						<span class="border"></span>
 					</label>
 
+					<label class="form-group"style="display: none;" id="age">
+						<textarea id="agee" class="form-control"></textarea>
+						<span for="">How old is the item?</span>
+						<span class="border"></span>
+					</label>
+
+					<label class="form-group"style="display: none;" id="defects">
+						<textarea id="defectss" class="form-control"></textarea>
+						<span for="">Does it have any defects or damage caused to it?</span>
+						<span class="border"></span>
+					</label>
+
+					<label class="form-group"style="display: none;" id="image">
+						<progress id="uploader" value="0" max="100">0%</progress>
+						<input id="imagee" type="file" name="filename" class="form-control">
+						<span for="">Upload an image of the item</span>
+						<span class="border"></span>
+					</label>
+
 					<label class="form-group">
 						<input id="phone" type="number" class="form-control"  required>
 						<span for="">Phone</span>
 						<span class="border"></span>
 					</label>
+
 					<label class="form-group" >
 						<textarea name="" id="remarks" class="form-control"></textarea>
 						<span for="">Any remarks</span>
@@ -100,10 +120,14 @@
 	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-storage.js"></script>
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="js/config.js"></script>
 	<script src="js/main5.js"></script>
 	<script>
+
+
+
 		function myFunction1() {
   // Get the checkbox
   var checkBox = document.getElementById("yes");
@@ -125,9 +149,16 @@ function myFunction2() {
   if (checkBox.checked == true){
     document.getElementById("desc").style.display = "block";
 	document.getElementById("describe").style.display = "block";
+	document.getElementById("age").style.display = "block";
+	document.getElementById("defects").style.display = "block";
+	document.getElementById("image").style.display = "block";
   } else {
     document.getElementById("desc").style.display = "none";
 	document.getElementById("describe").style.display = "none";
+	document.getElementById("age").style.display = "none";
+	document.getElementById("defects").style.display = "none";
+	document.getElementById("defects").style.display = "none";
+	document.getElementById("image").style.display = "none";
   }
 }
 </script>

@@ -132,6 +132,8 @@ function phoneAuth() {
     firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function (confirmationResult) {
         window.confirmationResult = confirmationResult;
         coderesult = confirmationResult;
+        document.getElementById('sender').style.display = 'none';
+        document.getElementById('verifier').style.display = 'block';
         console.log('OTP Sent');
     }).catch(function (error) {
         // error in sending OTP
@@ -143,8 +145,12 @@ function phoneAuth() {
 function codeverify() {
     var code = document.getElementById('verificationcode').value;
     coderesult.confirm(code).then(function () {
-        console.log('OTP Verified');
+      document.getElementsByClassName('p-conf')[0].style.display = 'block';
+      document.getElementsByClassName('n-conf')[0].style.display = 'none';
+      console.log('OTP Verified');
     }).catch(function () {
+        document.getElementsByClassName('p-conf')[0].style.display = 'none';
+        document.getElementsByClassName('n-conf')[0].style.display = 'block';
         console.log('OTP Not correct');
     })
 }

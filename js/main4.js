@@ -11,7 +11,7 @@ var config = {
     firebase.initializeApp(config);
    var i=0;
    var user= firebase.auth().currentUser;
-   console.log(user);
+  //  var name = firebase.database().ref('userdata/'+localStorage.getItem('emails'));
    var hjcordiref= firebase.database().ref("marketplace/"+`${localStorage.getItem("uids")}`);
     hjcordiref.orderByChild('title').on("child_added", function(data){
       var newVoke = data.val();
@@ -38,7 +38,7 @@ var config = {
               </div>
             </div>
             <div class="col-6" style="display:flex;align-items: center; justify-content: center;">
-            <img src="${firebase.storage().ref("images/"+`${localStorage.getItem("uids")}`+'/'+`${newVoke.title}`).getDownloadURL()}" class="img-fluid" style="postion:absolute;top:0%;right:0%;">
+            <img src="images/e-waste-management.jpg" class="img-fluid" style="postion:absolute;top:0%;right:0%;">
             </div>
           </div>
           <div class="row">

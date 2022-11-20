@@ -1,13 +1,4 @@
-var config = {
-    apiKey: "AIzaSyBtn3Eu1MmO1pY27Z9H5EiImSyT4vELbbY",
-    authDomain: "e-waste-management-6448e.firebaseapp.com",
-    databaseURL: "https://e-waste-management-6448e-default-rtdb.firebaseio.com",
-    projectId: "e-waste-management-6448e",
-    storageBucket: "e-waste-management-6448e.appspot.com",
-    messagingSenderId: "295588160955",
-    appId: "1:295588160955:web:bc68fb68715a999abe109e"
-  };
-  // Initialize Firebase
+
    firebase.initializeApp(config);
   var i=0;
  
@@ -18,7 +9,6 @@ var config = {
     hjcordiref1.on("child_added", function(data){
       console.log(data.key);
    
-      var storageRef = firebase.storage().ref("images/"+`${localStorage.uids}`+'/'+`${document.querySelector('#title').value}`).getDownloadURL();
           var newVoke = data.val();
           var time=newVoke.time;
           if(!time)
@@ -32,7 +22,7 @@ var config = {
             <article class="entry">
    
               <div class="entry-img">
-                <img src="${storageRef}" alt="" class="img-fluid">
+                <img src="images/e-waste-management.jpg" alt="" class="img-fluid">
               </div>
    
               <h1 style="font-size:3em;" class="entry-title">

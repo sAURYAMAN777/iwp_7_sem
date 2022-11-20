@@ -122,22 +122,18 @@ var userrole= firebase.database().ref("userdata/");
   var dtitle = self.getAttribute("data-key-id");
   var uid= self.getAttribute("data-uid-id");
   var tgref=firebase.database().ref("marketplace/"+localStorage.uids+"/"+dtitle);
-  var newref=firebase.database().ref("orders/"+uid);
+ var newref=firebase.database().ref("orders/"+uid);
 
-  newref.orderByChild("title").equalTo(dtitle).on("child_added", function(data){
-    data.val().status="active";         
-    tgref.set(data.val());
-  });
+ newref.orderByChild("title").equalTo(dtitle).on("child_added", function(data){
+  data.val().status="active";         
+  newref.set(data.val());
+ });
+
+  
+  
   window.location.href="payment.html";
  } 
-// var us=document.getElementById("user");
 
-// document.getElementById("join").addEventListener("click",joinf);
-// function joinf(){
- 
-//   window.open('marketplace.html','_self');
-
-// }
 
 document.getElementById("log").addEventListener("click",logo);
 function logo(){

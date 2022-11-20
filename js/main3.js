@@ -62,17 +62,18 @@ document.querySelector('#btn-signup').onclick = function(){
     var phone = document.querySelector('#phnno').value;
        var city = document.querySelector("#city").value;
      var interests = document.querySelector("#interest").value;
+     var email = localStorage.getItem("vmkey");
     if(name!=null && phone!=null && city!=null && interests!=null && name!="" && phone!="" && city!="" && interests!="" && name!=" " && phone!=" " && city!=" " && interests!=" "){
         var pq=document.getElementById("loadar");
     pq.style.display="block";
-    var kpliref = firebase.database().ref('userdata/');
+    var kpliref = firebase.database().ref('userdata/'+email);
     var data={
         phone: phone,
         college: city,
         role: interests,
         name: name,
         type:"regular",
-        email:localStorage.getItem("vmkey")
+        email:email
  }
      kpliref.push(data).then(function() {
             firebase.auth().signOut();

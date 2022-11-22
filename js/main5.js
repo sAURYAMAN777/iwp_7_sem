@@ -9,16 +9,16 @@ var uploader = document.getElementById('uploader');
                         uploader.value = percentage;
                     }, function error(err) {
                         },function complete() {
-                            // firebase.database().ref("Images/"+).set({
-
-                            // });
+                            task.snapshot.ref.getDownloadURL().then(function(url){
+                                document.getElementById("img-url").innerHTML = url;
+                            });
                     }); 
                  });
 
 document.querySelector("#createroom").onclick = function(){
     var d= new Date();
     var format=d.getDate()+" / "+(d.getMonth()+1)+" / "+d.getFullYear()+" "+(d.getHours())+" : "+(d.getMinutes()+1)+" : "+(d.getSeconds()+1)+" GMT +0530 (Indian Standard Time)";
-let name1,title,address,quantity="",phone,remark="",status="active",item_sell="",description="",age="",defects="";    
+let name1,title,address,quantity="",phone,remark="",status="active",item_sell="",description="",age="",defects="",price, url;    
 vali();
             function vali(){
                 
@@ -33,6 +33,8 @@ vali();
                 description=document.querySelector('#describee').value;
                 age=document.querySelector('#agee').value;
                 defects=document.querySelector('#defectss').value;
+                price=document.querySelector('#pricee').value;
+                url=document.getElementById("img-url").innerHTML;
                 if(name1!=null && title!=null && quantity!=null && address!=null && phone!=null){
                 var user = firebase.auth().currentUser;
          var tgref=firebase.database().ref("marketplace/"+`${user.uid}/${document.getElementById("title").value}`);
@@ -49,38 +51,14 @@ vali();
         "description":description,
         "how_old_is_item":age,
         "defects":defects,
+        "price":price,
         "status":status,
-         }
+        "url":url
+        }
      tgref.set(data).then(function(){
 
         var cliref1 = firebase.database().ref('userdata/');
         window.location.href="customer.html#order";
-//         cliref1.on("child_added",function(snapshot) {
-//           if(snapshot.val().email==localStorage.emails)
-//           {
-//             if(snapshot.val().type=="monthly")
-//             {
-//                 alert("You dont have to pay since you have subscribed to our monthly plan");
-//                 window.location.href="customer.html#order";
-//             }
-//             else if(snapshot.val().type=="premium")
-//             {
-//                 alert("You dont have to pay since you have subscribed to our premium plan");
-//                 window.location.href="customer.html#order";
-//             }
-//             if(!(localStorage.check))
-//             {
-//                 alert("You dont have to pay since the first pickup is free");
-//                 localStorage.setItem('check',1);
-//                 // window.location.href="customer.html#order";
-//             }
-//             else {
-//                 localStorage.setItem('money',200);
-//                 window.location.href="payment.html";  
-//             }            
-//           }
-  
-//   });
              
     });
   

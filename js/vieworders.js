@@ -3,9 +3,7 @@
   var i=0;
  
    var user= firebase.auth().currentUser;
-   console.log(user);
    var hjcordiref1= firebase.database().ref("orders/"+`${localStorage.uids}`);
-   
     hjcordiref1.on("child_added", function(data){
       console.log(data.key);
    
@@ -13,24 +11,23 @@
           var time=newVoke.time;
           if(!time)
           time= new Date();
-          
-          if(newVoke.item_to_be_sold)
-           {
+          // var url="images/e-waste-management.jpg";
+          if(newVoke.item_to_be_sold){
            var html = "";
            html +=`
-            <div id="${encodeURI(data.key)+'wrap'}" class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up" style="border: 2px solid black; border-radius: 6px; padding 8px;">
+            <div id="${encodeURI(data.key)+'wrap'}" class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up" style="border: 2px solid black; border-radius: 6px; padding 8px;margin: 12px;">
             <article class="entry">
    
-              <div class="entry-img">
-                <img src="images/e-waste-management.jpg" alt="" class="img-fluid">
-              </div>
+            <div class="entry-img" style="width:40%;height:55%;">
+            <center><img src="${newVoke.url}" id="${newVoke.title}" alt="" class="img-fluid"></center>
+            </div>
    
               <h1 style="font-size:3em;" class="entry-title">
                 ${newVoke.item_to_be_sold}
               </h1>
-              <h1 class="entry-title">
-                 <span style="font-weight:500">Price:<span> Rs ***
-              </h1>
+              <h4 class="entry-title">
+                 <span style="font-weight:500">Price:<span> Rs ${newVoke.price}
+              </h4>
    
               <div class="entry-meta">
                 <ul>
@@ -52,6 +49,9 @@
    `
    
              document.getElementById("classe2").innerHTML += html;
+            //  firebase.database().ref('marketplace/'+`${localStorage.uids}`+'/'+`${newVoke.title}`).on('value',function(snapshot){
+            //   document.getElementById(newVoke.title).src=snapshot.val().link;
+            // });
            }
           
          });
@@ -65,26 +65,23 @@
       var pr=confirm("Are you sure you want to cancel?");
       if(pr)
       {
-       // delete message
        var db= firebase.database().ref("orders/"+localStorage.uids).child(Id).remove();
        window.location.href="vieworders.html";
       }
     }
-    function buy_item(self){
-     var dtitle = self.getAttribute("data-key-id");
-     var uid= self.getAttribute("data-uid-id");
-     var tgref=firebase.database().ref("marketplace/"+uid+"/"+dtitle);
-    var newref=firebase.database().ref("orders/"+uid);
+    // function buy_item(self){
+    //  var dtitle = self.getAttribute("data-key-id");
+    //  var uid= self.getAttribute("data-uid-id");
+    //  var tgref=firebase.database().ref("marketplace/"+uid+"/"+dtitle);
+    //  var newref=firebase.database().ref("orders/"+uid);
    
-    newref.orderByChild("title").equalTo(dtitle).on("child_added", function(data){
+    // newref.orderByChild("title").equalTo(dtitle).on("child_added", function(data){
               
-     tgref.set(data.val());
-    });
-   
+    //  tgref.set(data.val());
+    // });
      
-     
-     window.location.href="payment.html";
-    } 
+    //  window.location.href="payment.html";
+    // } 
 
     
 

@@ -59,31 +59,36 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                 </div>
-                <div class="col-lg-6 col-md-6" id="sender" style="background-color: #6c757d;padding: 20px;display: flex;flex-direction: column;
+                <div class="col-lg-6 col-md-6" style="background-color: #6c757d;padding: 20px;display: flex;flex-direction: column;
                 flex-wrap: wrap;justify-content: center;align-items: center;border-radius: 10px;">
+
+                  <div id="sender">
                     <form>
-                        <input type="number" id="debit-no" placeholder="Enter Debit card Number" required>:<label for="debit-no"> Debit Card Number</label>
-                        <input type="text" id="acc-name" placeholder="Enter name of account holder" required>:<label for="acc-name"> Account Holder's Name</label>
-                        <input type="date" id="expiry" required>:<label for="expiry">The expiry date of debit card</label>
-                        <input type="number" id="cvv" placeholder="Enter CVV" required>:<label for="cvv">CVV</label>
-                        <input type="text" id="number" required>:<label for="number">Valid Phone Number</label>
-                        <!-- Add a container for reCaptcha -->
-                        <div id="recaptcha-container"></div>
-                        
+                      <input type="number" id="debit-no" placeholder="Enter Debit card Number" required>:<label for="debit-no"> Debit Card Number</label>
+                      <input type="text" id="acc-name" placeholder="Enter name of account holder" required>:<label for="acc-name"> Account Holder's Name</label>
+                      <input type="date" id="expiry" required>:<label for="expiry">The expiry date of debit card</label>
+                      <input type="number" id="cvv" placeholder="Enter CVV" required>:<label for="cvv">CVV</label>
+                      <input type="text" id="number" required>:<label for="number">Valid Phone Number</label>
+                      <!-- Add a container for reCaptcha -->
+                      <div class="amount" style="padding: 10px 10px 7px 10px;background-color: antiquewhite;border-radius: 5px;margin-bottom: 6px;width: 60%;">
+                        <p style="font-family: hel;font-weight: 600;">Money to be withdrawn :&nbsp;<span id="amt"></span></p>
+                      </div>
+                      <div id="recaptcha-container"></div> 
                     </form>
                     <center><input type="button" id="send" value="Send OTP" onclick="phoneAuth()"></center>
-                    <div class="amount" style="padding: 10px 10px 7px 10px;background-color: antiquewhite;border-radius: 5px;margin-bottom: 6px;">
-                        <p style="font-family: hel;font-weight: 600;">Money to be withdrawn :&nbsp;<span id="amt"></span></p>
-                    </div>
-                    
-                    <div id="verifier" style="display: none;">
-                      <form id="two">
-                        <input type="text" id="verificationcode" placeholder="OTP Code">
-                        <input type="button" id="verify" value="Verify" onclick="codeverify()">
-                        <div class="p-conf">Number Verified</div>
-                        <div class="n-conf">OTP ERROR</div>
-                      </form>
-                    </div>
+                  </div>
+
+                  <div id="verifier" style="display: none;">
+                    <center>
+                    <form id="two">
+                      <input type="text" id="verificationcode" placeholder="OTP Code">
+                      <input type="button" id="verify" value="Verify" onclick="codeverify()">
+                      <div class="p-conf">Number Verified</div>
+                      <div class="n-conf">OTP ERROR</div>
+                    </form>
+                    <a id="back" href="customer.html" style="display: none;"><button class="btn btn-success">Go back to Dashboard</button></a>
+                    </center>
+                  </div>
 
                 </div>
                 <div class="col-lg-3 col-md-3">
@@ -147,6 +152,7 @@ function codeverify() {
     coderesult.confirm(code).then(function () {
       document.getElementsByClassName('p-conf')[0].style.display = 'block';
       document.getElementsByClassName('n-conf')[0].style.display = 'none';
+      document.getElementById('back').style.display = 'block';
       console.log('OTP Verified');
     }).catch(function () {
         document.getElementsByClassName('p-conf')[0].style.display = 'none';
@@ -156,8 +162,8 @@ function codeverify() {
 }
 
  var money=0;
- if(localStorage.money)
- money=localStorage.money;
+ if(sessionStorage.money)
+ money=sessionStorage.money;
  document.getElementById("amt").innerHTML=money;
 
       //This function runs everytime the auth state changes. Use to verify if the user is logged in

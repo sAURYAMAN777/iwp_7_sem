@@ -56,8 +56,6 @@
 
 })(jQuery);
 document.querySelector('#pass').onclick = function(){
-    
-
 			
     var password = document.querySelector('#email').value;
        password=password.trim();
@@ -75,7 +73,8 @@ auth.sendPasswordResetEmail(emailAddress).then(function() {
     pq.style.display="none";
             tyu.textContent="Email successfully sent!";
 }).catch(function(error) {
-  // An error happened.
+    console.log(error)
+    // An error happened.
 });
 }
 }

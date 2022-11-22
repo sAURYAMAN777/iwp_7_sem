@@ -1,12 +1,7 @@
 
 (function ($) {
     "use strict";
-
-    
-    /*==================================================================
-    [ Validate ]*/
     var input = $('.validate-input .input100');
-
     $('.validate-form').on('submit',function(e){
         e.preventDefault();
         var check = true;
@@ -17,17 +12,13 @@
                 check=false;
             }
         }
-
         return check;
     });
-
-
     $('.validate-form .input100').each(function(){
         $(this).focus(function(){
            hideValidate(this);
         });
     });
-
     function validate (input) {
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
             if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
@@ -40,26 +31,18 @@
             }
         }
     }
-
     function showValidate(input) {
         var thisAlert = $(input).parent();
 
         $(thisAlert).addClass('alert-validate');
     }
-
     function hideValidate(input) {
         var thisAlert = $(input).parent();
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
-    
-
 })(jQuery);
-document.querySelector('#btn-login').onclick = function(){
-    
-
-			
+document.querySelector('#btn-login').onclick = function(){			
     var password = document.querySelector('#password').value;
        var email = document.querySelector("#email").value;
      email=email.trim();
@@ -77,26 +60,18 @@ document.querySelector('#btn-login').onclick = function(){
                             console.log(errorMessage);
                             console.log(errorCode);
 });
-}
-}
-
+}}
 firebase.auth().onAuthStateChanged(function(user) {
- 
- 
    if(user){
        var user = firebase.auth().currentUser;
        console.log(user);
        if(user.emailVerified!=true)
            {
        user.sendEmailVerification().then(function() {
-            
    var emailVerified = user.emailVerified;
-
       var pq=document.getElementById("loadar");
     pq.style.display="none";
         window.open('verify-email.html','_self');
-           
-    
 }).catch(function(error) {
   // An error happened.
              var errorMessage = error.message;
@@ -105,13 +80,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     pq.style.display="none";
             tyu.textContent=errorMessage;
             firebase.auth().signOut();
-           
-           
-           
 });console.log(user);
            }
        else{
-
            var cliref = firebase.database().ref('userdata/');
        cliref.orderByChild("email").equalTo(user.email).on("value", function(data){
            if(data.val()){
@@ -124,12 +95,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     pq.style.display="none";
                window.open('database.html','_self');
            }
-       
-
    } );
-   }
-   }
-
+   }}
     else{
     console.log("no");
     }

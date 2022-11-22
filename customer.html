@@ -22,23 +22,8 @@
   <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="bootstrap/bootstrap-social/bootstrap-social.css">
-   <link rel="stylesheet" type="text/css" href="css/teacher.css">
-   <link rel="stylesheet" type="text/css" href="css/style.css">
-   <link rel="manifest" href="manifest.json">
-   <meta name="apple-mobile-web-app-capable" content="yes">
-   <meta name="apple-mobile-web-app-status-bar-style" content="#3cb371">
-   <meta name="apple-mobile-web-app-title" content="E Waste">
-   <link rel="apple-touch-icon" href="images/icons/icon-72x72.png" sizes="72x72">
-   <link rel="apple-touch-icon" href="images/icons/icon-96x96.png" sizes="96x96">
-   <link rel="apple-touch-icon" href="images/icons/icon-128x128.png" sizes="128x128">
-   <link rel="apple-touch-icon" href="images/icons/icon-144x144.png" sizes="144x144">
-   <link rel="apple-touch-icon" href="images/icons/icon-152x152.png" sizes="152x152">
-   <link rel="apple-touch-icon" href="images/icons/icon-192x192.png" sizes="192x192">
-   <link rel="apple-touch-icon" href="images/icons/icon-384x384.png" sizes="384x384">
-   <link rel="apple-touch-icon" href="images/icons/icon-512x512.png" sizes="512x512">
-   <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
-   <meta name="msapplication-TileColor" content="#3cb371">
-   <meta name="theme-color" content="#3cb371">
+  <link rel="stylesheet" type="text/css" href="css/tool.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- Template Main CSS File -->
   <link href="css/style2.css" rel="stylesheet">
   <link href="css/blog.css" rel="stylesheet">
@@ -50,13 +35,13 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center header-transparent">
     <div class="container d-flex align-items-center justify-content-between">
-
       <div class="logo">
+        <i style="position: absolute;left:3%;top:9%" class="fa fa-user fa-2x">&nbsp;
+          <i id="user" style="font-family:'Lucida Sans', 'Lucida Grande', Geneva, Verdana, sans-serif;font-size: 0.6em;"></i>
+        </i>
         <h1><a href="Customer.html"><span>E waste management</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
 
+      </div>
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -65,11 +50,8 @@
           <li><a class="nav-link scrollto" href="vieworders.html"><span>My Orders</span></a></li>
           <li><a class="nav-link scrollto" href="#features">Services</a></li>
           <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-          <!-- <li><a class="nav-link scrollto" href="#pricing">Bill pay</a></li> -->
-          <li><a class="nav-link scrollto" href="blog.html">Sustainability</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><button class="btn btn-outline-danger" style="margin-left: 71%;background-color: #fff;" id="log" type="button"><i class="bi bi-power"></i> Logout</button></li>
-          <li><i id="user" class="fa fa-user"></i></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -409,106 +391,26 @@
       </div>
     </section><!-- End Gallery Section -->
 
-
-    <!-- ======= Team Section ======= -->
-    <!-- <section id="team" class="team">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>Team</h2>
-          <p>Our Great Team</p>
-        </div>
-
-        <div class="row" data-aos="fade-left">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="member" data-aos="zoom-in" data-aos-delay="100">
-              <div class="pic"><img src="img/team/team-1.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-            <div class="member" data-aos="zoom-in" data-aos-delay="200">
-              <div class="pic"><img src="img/team/team-2.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="member" data-aos="zoom-in" data-aos-delay="300">
-              <div class="pic"><img src="img/team/team-3.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="member" data-aos="zoom-in" data-aos-delay="400">
-              <div class="pic"><img src="img/team/team-4.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>End Team Section -->
-
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
           <h2>Pricing</h2>
-          <p>Check our Pricing</p>
+          <p>Upgrade to Premium</p>
         </div>
 
         <div class="row" data-aos="fade-left">
 
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="box" data-aos="zoom-in" data-aos-delay="100">
-              <h3>Free</h3>
-              <h4><sup>Rs</sup>0<span> / Pickup</span></h4>
+              <h3>Monthly</h3>
+              <h4><sup>Rs</sup>149<span> / Month</span></h4>
               <ul>
-                <li>First pickup</li>
-                <li>Get it free</li>
+                <li>Free Delivery</li>
                 <li>Swift service</li>
+                <li>-</li>
+                <li>-</li>
                 <!-- <li class="na">Pharetra massa</li>
                 <li class="na">Massa ultricies mi</li> -->
               </ul>
@@ -516,31 +418,15 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-            <div class="box featured" data-aos="zoom-in" data-aos-delay="200">
-              <h3></h3>
-              <h4><sup>Rs</sup>200<span> / pickup</span></h4>
-              <ul>
-                <li>For individual pickups</li>
-                <li>Book anytime</li>
-                <li>Swift service</li>
-                <!-- <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li> -->
-              </ul>
-              <div class="btn-wrap">
-                <a id="once" class="btn-buy">Try Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
             <div class="box" data-aos="zoom-in" data-aos-delay="300">
-              <h3>Daily</h3>
-              <h4><sup>Rs</sup>4000<span> / month</span></h4>
+              <h3>3 Months</h3>
+              <h4><sup>Rs</sup>299<span> / 3 months</span></h4>
               <ul>
-                <li>Approx. Rs 130 per pickup</li>
-                <li>Pickup within 1 hour</li>
-                <li>Get Refund for late pickups</li>
+                <li>Free Delivery</li>
+                <li>Delivery with 1 week</li>
+                <li>Best Deals</li>
+                <li>-</li>
                 <!-- <li>Pharetra massa</li>
                 <li>Massa ultricies mi</li> -->
               </ul>
@@ -550,15 +436,16 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
             <div class="box" data-aos="zoom-in" data-aos-delay="400">
               <span class="advanced">Premium</span>
-              <h3>Premium</h3>
-              <h4><sup>Rs</sup>5000<span> / month</span></h4>
+              <h3>Yearly</h3>
+              <h4><sup>Rs</sup>699<span> / year</span></h4>
               <ul>
-                <li>Schedule multiple times everyday</li>
-                <li>Anytime you want</li>
-                <li>Get our goodies</li>
+                <li>Free Delivery</li>
+                <li>Fastest Delivery</li>
+                <li>Exclusive Offers</li>
+                <li>Instant Refund</li>
                 <!-- <li>Pharetra massa</li>
                 <li>Massa ultricies mi</li> -->
               </ul>

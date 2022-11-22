@@ -96,6 +96,12 @@
 						<span class="border"></span>
 					</label>
 
+					<label class="form-group"style="display: none;" id="price">
+						<input id="pricee" type="number" class="form-control" required>
+						<span for="">Expected Price (in Rs)</span>
+						<span class="border"></span>
+					</label>
+
 					<label class="form-group">
 						<input id="phone" type="number" class="form-control"  required>
 						<span for="">Phone</span>
@@ -114,6 +120,7 @@
 				</button>
 			</div>
 		</div>
+		<span id="img-url" style="visibility:hidden;"></span>
 		<a href="query.html" title="query chat bot" class="back-to-topq query-btn"><i class="fa fa-question"></i></a>
 
 	<script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
@@ -152,13 +159,14 @@ function myFunction2() {
 	document.getElementById("age").style.display = "block";
 	document.getElementById("defects").style.display = "block";
 	document.getElementById("image").style.display = "block";
+	document.getElementById("price").style.display = "block";
   } else {
     document.getElementById("desc").style.display = "none";
 	document.getElementById("describe").style.display = "none";
 	document.getElementById("age").style.display = "none";
 	document.getElementById("defects").style.display = "none";
-	document.getElementById("defects").style.display = "none";
 	document.getElementById("image").style.display = "none";
+	document.getElementById("price").style.display = "none";
   }
 }
 </script>

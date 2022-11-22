@@ -32,8 +32,8 @@ var config = {
                 <p class="ptime">${time}</p>
               </div>
             </div>
-            <div class="col-6" style="display:flex;align-items: center; justify-content: center;">
-            <img src="images/e-waste-management.jpg" class="img-fluid" style="postion:absolute;top:0%;right:0%;">
+            <div class="entry-img" style="width:40%;height:55%;">
+            <center><img src="${newVoke.url}" id="${newVoke.title}" alt="" class="img-fluid"></center>
             </div>
           </div>
           <div class="row">
@@ -93,14 +93,14 @@ var config = {
              <article class="entry">
     
                <div class="entry-img">
-                 <img src="images/e-waste-management.jpg" alt="" class="img-fluid">
+               <center><img src="${newVoke.url}" id="${newVoke.title}" alt="" class="img-fluid" style="margin:6px;height:286px;"></center>
                </div>
     
                <h1 style="font-size:3em;" class="entry-title">
                  ${newVoke.item_to_be_sold}
                </h1>
                <h1 class="entry-title">
-                  <span style="font-weight:500">Price:<span> Rs ***
+                  <span style="font-weight:500">Price:<span> Rs ${newVoke.price}
                </h1>
     
                <div class="entry-meta">

@@ -9,6 +9,13 @@ var config = {
    };
    // Initialize Firebase
     firebase.initializeApp(config);
+
+    firebase.database().ref('userdata/').on('child_added',function(data){
+      if(data.val().email == localStorage.emails) {
+        document.getElementById('user').innerHTML = data.val().name;
+      }
+    });
+
    var i=0;
    var user= firebase.auth().currentUser;
   //  var name = firebase.database().ref('userdata/'+localStorage.getItem('emails'));

@@ -15,20 +15,20 @@ firebase.initializeApp(config);
            var html = "";
            html +=`
            <div style="padding: 8px" class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-            <div id="${encodeURI(data.key)+'wrap'}" style="background-color:aquamarine;">
+            <div id="${encodeURI(data.key)+'wrap'}" style="background-image:linear-gradient(to right, #00b4db,#0083b0);padding: 5px">
             <article class="entry">
    
             <div class="entry-img">
             <center><img src="${newVoke.url}" id="${newVoke.title}" alt="" class="img-fluid"  style="height:200px;"></center>
             </div>
-   
+            <div class="text-content">
               <h1 style="font-size:3em;" class="entry-title">
                 ${newVoke.item_to_be_sold}
               </h1>
               <h4 class="entry-title">
                  <span style="font-weight:500">Price:<span> Rs ${newVoke.price}
               </h4>
-   
+            </div>
               <div class="entry-meta">
                 <ul>
                   <li class="d-flex align-items-center"><i class="icofont-user"></i>${newVoke.name}</li>

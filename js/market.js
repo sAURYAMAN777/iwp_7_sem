@@ -1,16 +1,12 @@
 var flag=0;
 var i="";
 var user= firebase.auth().currentUser;
-console.log(user);
 var hjcordiref= firebase.database().ref("marketplace/");
 
-
  hjcordiref.on("child_added", function(data){
-   console.log(data.key);
    i=data.key;
       var pathe= firebase.database().ref("marketplace/"+data.key)
       pathe.on("child_added",function(data){
-
 
        var newVoke = data.val();
        var time=newVoke.time;
@@ -77,25 +73,13 @@ var hjcordiref= firebase.database().ref("marketplace/");
        </div>
       </div>
 `
-
           document.getElementById("classe").innerHTML += html;
         }
        
       });
       
   });
-  
-//  function cancellation(self) {
-//    var Id = self.getAttribute("id");
-//    var did= self.getAttribute("data-id");
- 
-//    var pr=confirm("Are you sure you want to delete?");
-//    if(pr)
-//    {
-//     // delete message
-//     var db= firebase.database().ref("orders/"+did).child(Id).remove();
-//    }
-//  }
+
  function buy_item(self){
   var dtitle = self.getAttribute("data-key-id");
   var uid= self.getAttribute("data-uid-id");
@@ -130,22 +114,13 @@ var hjcordiref= firebase.database().ref("marketplace/");
   window.location.href="payment.html";
  } 
 
-
 document.getElementById("log").addEventListener("click",logo);
 function logo(){
  
   firebase.auth().signOut();
-
 }
-
-
 firebase.auth().onAuthStateChanged(function(user) {
-
-
 if(!user){
-
     window.open('index1.html','_self');
 } 
-
- 
 });

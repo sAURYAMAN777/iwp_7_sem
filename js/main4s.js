@@ -32,7 +32,7 @@ var config = {
              {
              var html = "";
              html +=`
-              <div id="${encodeURI(data.key)+'wrap'}" style="background-color:aliceblue;padding: 8px;" class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+              <div id="${encodeURI(data.key)+'wrap'}" style="background-color:aliceblue;padding: ;margin:4px;" class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
               <article class="entry">
 
               <div class="entry-img" style="width:40%;height:55%;">

@@ -1,5 +1,4 @@
-
-   firebase.initializeApp(config);
+firebase.initializeApp(config);
   var i=0;
  
    var user= firebase.auth().currentUser;
@@ -47,17 +46,12 @@
             </article><!-- End blog entry -->
           </div>
    `
-   
              document.getElementById("classe2").innerHTML += html;
-            //  firebase.database().ref('marketplace/'+`${localStorage.uids}`+'/'+`${newVoke.title}`).on('value',function(snapshot){
-            //   document.getElementById(newVoke.title).src=snapshot.val().link;
-            // });
+
            }
           
          });
          
-
-    
     function cancellation(self) {
       var Id = self.getAttribute("id");
    
@@ -69,21 +63,6 @@
        window.location.href="vieworders.html";
       }
     }
-    // function buy_item(self){
-    //  var dtitle = self.getAttribute("data-key-id");
-    //  var uid= self.getAttribute("data-uid-id");
-    //  var tgref=firebase.database().ref("marketplace/"+uid+"/"+dtitle);
-    //  var newref=firebase.database().ref("orders/"+uid);
-   
-    // newref.orderByChild("title").equalTo(dtitle).on("child_added", function(data){
-              
-    //  tgref.set(data.val());
-    // });
-     
-    //  window.location.href="payment.html";
-    // } 
-
-    
 
 document.getElementById("log").addEventListener("click",logo);
 function logo(){

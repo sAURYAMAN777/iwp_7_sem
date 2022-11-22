@@ -51,8 +51,6 @@
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
-    
 
 })(jQuery);
 
@@ -66,7 +64,7 @@ document.querySelector('#btn-signup').onclick = function(){
     if(name!=null && phone!=null && city!=null && interests!=null && name!="" && phone!="" && city!="" && interests!="" && name!=" " && phone!=" " && city!=" " && interests!=" "){
         var pq=document.getElementById("loadar");
     pq.style.display="block";
-    var kpliref = firebase.database().ref('userdata/'+email);
+    var kpliref = firebase.database().ref('userdata/');
     var data={
         phone: phone,
         college: city,
@@ -85,14 +83,8 @@ localStorage.clear();
  window.open('index.html','_self');
     
 });
- 
-
-     
-					return true
-				}
-                        
-            
-            
+	return true
+	}
 }
 
 

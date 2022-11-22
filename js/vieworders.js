@@ -14,11 +14,12 @@ firebase.initializeApp(config);
           if(newVoke.item_to_be_sold){
            var html = "";
            html +=`
-            <div id="${encodeURI(data.key)+'wrap'}" class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up" style="border: 2px solid black; border-radius: 6px; padding 8px;margin: 12px;">
+           <div style="padding: 8px" class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+            <div id="${encodeURI(data.key)+'wrap'}" style="background-color:aquamarine;">
             <article class="entry">
    
-            <div class="entry-img" style="width:40%;height:55%;">
-            <center><img src="${newVoke.url}" id="${newVoke.title}" alt="" class="img-fluid"></center>
+            <div class="entry-img">
+            <center><img src="${newVoke.url}" id="${newVoke.title}" alt="" class="img-fluid"  style="height:200px;"></center>
             </div>
    
               <h1 style="font-size:3em;" class="entry-title">
@@ -44,6 +45,7 @@ firebase.initializeApp(config);
               </div>
    
             </article><!-- End blog entry -->
+          </div>
           </div>
    `
              document.getElementById("classe2").innerHTML += html;

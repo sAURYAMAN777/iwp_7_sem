@@ -21,9 +21,9 @@ var hjcordiref= firebase.database().ref("marketplace/");
          <div id="${encodeURI(data.key)+'wrap'}">
          <article class="entry">
 
-         <div class="entry-img" style="width:40%;height:55%;">
-         <center><img src="${newVoke.url}" id="${newVoke.title}" alt="" class="img-fluid"></center>
-         </div>
+         <div class="entry-img">
+            <center><img src="${newVoke.url}" id="${newVoke.title}" alt="" class="img-fluid"  style="height:200px;"></center>
+          </div>
 
            <h1 style="font-size:3em;" class="entry-title">
              ${newVoke.item_to_be_sold}
